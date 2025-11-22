@@ -1,34 +1,37 @@
 using FishNet.Object;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Animations;
+using UnityEngine.Animations; // Note: Standard Unity Animations namespace if needed
 using FishNet.Component.Animating;
 
-
-// Inherit from NetworkBehaviour instead of MonoBehaviour
 [RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(PlayerStats))] // Ensure PlayerStats is on the same object
 public class PlayerMovement : NetworkBehaviour
 {
+    [Header("Movement Settings")]
     public float moveSpeed = 5f;
     public float gravity = -9.81f;
     public float jumpHeight = 1f;
+    
+    [Header("Stamina Settings")]
+    public float jumpStaminaCost = 20f; // Amount of stamina to use per jump
 
+    [Header("References")]
     public Transform cameraTransform;
-
     public bool shouldFaceMovementDirection = false;
-
     public Animator animator;
     public NetworkAnimator networkAnimator;
 
-
     private PlayerControls _playerControls;
     private CharacterController _characterController;
+    private PlayerStats _playerStats; // Reference to the stats script
     private Vector3 _velocity;
 
     private void Awake()
     {
         _playerControls = new PlayerControls();
         _characterController = GetComponent<CharacterController>();
+        _playerStats = GetComponent<PlayerStats>(); // Get the reference
     }
 
     private void OnEnable()
@@ -43,20 +46,13 @@ public class PlayerMovement : NetworkBehaviour
 
     void Update()
     {
-        // Only run this code on the object the local client owns.
-        // This prevents us from moving other players' objects.
         if (!IsOwner)
             return;
 
         Vector2 input = _playerControls.Player.Move.ReadValue<Vector2>();
         bool isJumping = _playerControls.Player.Jump.ReadValue<float>() > 0;
 
-        if (isJumping && _characterController.isGrounded)
-        {
-            _velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-            networkAnimator.SetTrigger("Jump");
-        }
-
+        // MOVEMENT LOGIC
         Vector3 forward = cameraTransform.forward;
         Vector3 right = cameraTransform.right;
 
@@ -77,6 +73,24 @@ public class PlayerMovement : NetworkBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, Time.deltaTime * 10f);
         }
 
+        // JUMP LOGIC
+        if (isJumping && _characterController.isGrounded)
+        {
+            // Check if we have enough stamina before jumping
+            if (_playerStats.Stamina.Value >= jumpStaminaCost)
+            {
+                // Apply Physics
+                _velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+                
+                // Play Animation
+                networkAnimator.SetTrigger("Jump");
+
+                // Deduct Stamina (This calls the ServerRpc in PlayerStats)
+                _playerStats.CmdUseStamina(jumpStaminaCost);
+            }
+        }
+
+        // GRAVITY
         _velocity.y += gravity * Time.deltaTime;
         _characterController.Move(_velocity * Time.deltaTime);
     }

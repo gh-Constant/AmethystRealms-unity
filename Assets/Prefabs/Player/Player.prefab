@@ -314,6 +314,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 940326bede25c7d4181e84aabe32eccf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7863618233583232022}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 940326bede25c7d4181e84aabe32eccf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 674150985770721187}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 940326bede25c7d4181e84aabe32eccf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5148522561704465074}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 940326bede25c7d4181e84aabe32eccf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5391864097922966499}
   m_SourcePrefab: {fileID: 100100000, guid: 940326bede25c7d4181e84aabe32eccf, type: 3}
 --- !u!95 &3373339885911266262 stripped
 Animator:
@@ -529,6 +538,63 @@ MonoBehaviour:
   _interpolation: 2
   _clientAuthoritative: 1
   _sendToOwner: 0
+--- !u!114 &674150985770721187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8321384069424763670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1ed1bac27a0a5a43ba5d45f2a7b51af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 2405471646036117771}
+  _networkObjectCache: {fileID: 0}
+  _maxHealth: 100
+  _maxStamina: 100
+  _staminaRegen: 10
+--- !u!114 &5148522561704465074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8321384069424763670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.UIElements.UIDocument
+  m_PanelSettings: {fileID: 11400000, guid: 5b2278bedd36c514e9823d6ad9669637, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 4296009775b788548869deb146314983, type: 3}
+  m_SortingOrder: 0
+  m_Position: 0
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
+  m_PivotReferenceSize: 0
+  m_Pivot: 0
+  m_WorldSpaceCollider: {fileID: 0}
+--- !u!114 &5391864097922966499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8321384069424763670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19dcd9c849f00f4cbd183b3847634d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerUI
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 2405471646036117771}
+  _networkObjectCache: {fileID: 0}
+  uiDocument: {fileID: 5148522561704465074}
 --- !u!4 &8660613486018562476 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 940326bede25c7d4181e84aabe32eccf, type: 3}
