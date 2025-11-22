@@ -11,7 +11,7 @@ public class PlayerMovement : NetworkBehaviour
 {
     public float moveSpeed = 5f;
     public float gravity = -9.81f;
-    public float jumpHeight = 2f;
+    public float jumpHeight = 1f;
 
     public Transform cameraTransform;
 

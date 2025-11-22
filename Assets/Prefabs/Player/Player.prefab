@@ -369,6 +369,7 @@ MonoBehaviour:
   - {fileID: 2031928345686086532}
   - {fileID: 6580715043450387016}
   - {fileID: 5022936783385042089}
+  - {fileID: 7863618233583232022}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
@@ -513,10 +514,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8cac635f24954048aad3a6ff9110beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Animating.NetworkAnimator
-  _componentIndexCache: 255
+  _componentIndexCache: 4
   _addedNetworkObject: {fileID: 2405471646036117771}
-  _networkObjectCache: {fileID: 0}
-  IgnoredParameters: []
+  _networkObjectCache: {fileID: 2405471646036117771}
+  IgnoredParameters:
+  - Jump
   _animator: {fileID: 3373339885911266262}
   _synchronizeWhenDisabled: 0
   _smoothFloats: 1
