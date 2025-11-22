@@ -1,6 +1,9 @@
 using FishNet.Object;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Animations;
+using FishNet.Component.Animating;
+
 
 // Inherit from NetworkBehaviour instead of MonoBehaviour
 [RequireComponent(typeof(CharacterController))]
@@ -13,6 +16,9 @@ public class PlayerMovement : NetworkBehaviour
     public Transform cameraTransform;
 
     public bool shouldFaceMovementDirection = false;
+
+    public Animator animator;
+    public NetworkAnimator networkAnimator;
 
 
     private PlayerControls _playerControls;
@@ -48,6 +54,7 @@ public class PlayerMovement : NetworkBehaviour
         if (isJumping && _characterController.isGrounded)
         {
             _velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            networkAnimator.SetTrigger("Jump");
         }
 
         Vector3 forward = cameraTransform.forward;
@@ -62,6 +69,8 @@ public class PlayerMovement : NetworkBehaviour
         Vector3 moveDirection = forward * input.y + right * input.x;
         _characterController.Move(moveDirection * moveSpeed * Time.deltaTime);
 
+        animator.SetFloat("velocity", _characterController.velocity.magnitude);
+
         if (shouldFaceMovementDirection && moveDirection.sqrMagnitude > 0.001f)
         {
             Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
@@ -70,6 +79,5 @@ public class PlayerMovement : NetworkBehaviour
 
         _velocity.y += gravity * Time.deltaTime;
         _characterController.Move(_velocity * Time.deltaTime);
-
     }
 }

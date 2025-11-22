@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5329435656705447508}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.048260357, y: 0.9498675, z: -0.24685888, w: 0.18569699}
-  m_LocalPosition: {x: -1.8812561, y: 2.784543, z: 4.6275635}
+  m_LocalRotation: {x: 0.17496152, y: -0.61649096, z: 0.14300802, w: 0.7542388}
+  m_LocalPosition: {x: 4.868744, y: 2.4359841, z: -0.9885254}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -112,7 +112,7 @@ MonoBehaviour:
     SplineCurvature: 0.5
   RecenteringTarget: 2
   HorizontalAxis:
-    Value: 157.87675
+    Value: -78.52323
     Center: 0
     Range: {x: -180, y: 180}
     Wrap: 1
@@ -122,7 +122,7 @@ MonoBehaviour:
       Time: 2
     Restrictions: 0
   VerticalAxis:
-    Value: -2.4697206
+    Value: -6.476933
     Center: 17.5
     Range: {x: -10, y: 45}
     Wrap: 0
@@ -275,6 +275,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 940326bede25c7d4181e84aabe32eccf, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b8a1273b927ea5342b3784b5a04f3bd4, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 940326bede25c7d4181e84aabe32eccf, type: 3}
       propertyPath: m_AnimatePhysics
       value: 0
       objectReference: {fileID: 0}
@@ -303,7 +307,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 940326bede25c7d4181e84aabe32eccf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5022936783385042089}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 940326bede25c7d4181e84aabe32eccf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7863618233583232022}
   m_SourcePrefab: {fileID: 100100000, guid: 940326bede25c7d4181e84aabe32eccf, type: 3}
+--- !u!95 &3373339885911266262 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 940326bede25c7d4181e84aabe32eccf, type: 3}
+  m_PrefabInstance: {fileID: 9203694528721415751}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8321384069424763670 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 940326bede25c7d4181e84aabe32eccf, type: 3}
@@ -356,6 +368,7 @@ MonoBehaviour:
   - {fileID: 6726431133001646960}
   - {fileID: 2031928345686086532}
   - {fileID: 6580715043450387016}
+  - {fileID: 5022936783385042089}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
@@ -380,7 +393,7 @@ MonoBehaviour:
   _spectatorInterpolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 1
+  <PrefabId>k__BackingField: 2
   <SpawnableCollectionId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 5306845881338098766
   <SceneId>k__BackingField: 0
@@ -424,6 +437,8 @@ MonoBehaviour:
   jumpHeight: 2
   cameraTransform: {fileID: 7446518317181238846}
   shouldFaceMovementDirection: 1
+  animator: {fileID: 3373339885911266262}
+  networkAnimator: {fileID: 7863618233583232022}
 --- !u!114 &6580715043450387016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -482,10 +497,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3a922574e605ff4ab132c8f7497493a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  _componentIndexCache: 3
+  _addedNetworkObject: {fileID: 2405471646036117771}
+  _networkObjectCache: {fileID: 2405471646036117771}
+  cinemachineCamera: {fileID: 8481849331229190039}
+--- !u!114 &7863618233583232022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8321384069424763670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8cac635f24954048aad3a6ff9110beb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FishNet.Runtime::FishNet.Component.Animating.NetworkAnimator
   _componentIndexCache: 255
   _addedNetworkObject: {fileID: 2405471646036117771}
   _networkObjectCache: {fileID: 0}
-  cinemachineCamera: {fileID: 8481849331229190039}
+  IgnoredParameters: []
+  _animator: {fileID: 3373339885911266262}
+  _synchronizeWhenDisabled: 0
+  _smoothFloats: 1
+  _interpolation: 2
+  _clientAuthoritative: 1
+  _sendToOwner: 0
 --- !u!4 &8660613486018562476 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 940326bede25c7d4181e84aabe32eccf, type: 3}
